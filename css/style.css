@@ -388,6 +388,18 @@ section.thin{
     /*border: 1px solid lightgray;*/
 }
 
+.mobile-language-box a:last-child{
+    margin-right: 0;
+}
+
+.mobile-language-box a{
+    margin-right: 25px;
+}
+
+.mobile-language-box img{
+    width: 25px;
+}
+
 .language-box{
     height: 100%;
     /*border: 1px solid lightgray;*/
@@ -413,6 +425,106 @@ section.thin{
 
 .language-box .progress{
     border-radius: 0;
+}
+
+
+.achievements-box{
+    height: 100%;
+    /*border: 1px solid lightgray;*/
+    padding: 15px;
+}
+
+.achievements-box .row:first-child{
+    margin-top: 0px;
+}
+
+.achievements-box .row{
+    height: 50%;
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.hobbies-box{
+    height: 100%;
+    /*border: 1px solid lightgray;*/
+    padding: 15px;
+}
+
+.hobbies-box .row:first-child{
+    margin-top: 0px;
+    height: 40%;
+}
+
+.hobbies-box .row{
+    height: 60%;
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.plans-box{
+    height: 100%;
+    /*border: 1px solid lightgray;*/
+    padding: 15px;
+}
+
+.plans-box .row:first-child{
+    margin-top: 0px;
+}
+
+.plans-box .row:last-child{
+    height: 70%;
+}
+
+.plans-box .row{
+    height: 30%;
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.contacts-box a:last-child{
+    margin-right: 0;
+}
+
+.contacts-box a{
+    margin-right: 25px;
+    color: #4b6370;
+}
+
+/*Реферат*/
+
+ul.content{
+    list-style-type: none;
+    padding-left: 20pt;
+}
+
+li.content-level-1{
+    margin-left: 0;
+}
+
+li.content-level-2{
+    margin-left: 20pt;
+}
+
+li.content-level-3{
+    margin-left: 40pt;
+}
+
+.abstract-box p{
+    text-indent: 20pt;
+    text-align: justify;
+}
+
+.warning-box{
+    border: 5px solid #4b6370;
+    padding: 5px;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 @media (min-width: 1200px) {
@@ -470,7 +582,7 @@ section.thin{
     .paper{
         box-shadow: 0 0 5px 0 black;
         margin: 5px 5px 5px 5px;
-        padding: 5px 5px 5px 5px;
+        padding: 25px 5px 25px 5px;
         width: 100%;
     }
 
