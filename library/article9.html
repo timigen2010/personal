@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>
+        Titarenko, Kolomoytseva, Gilmanova - Analysis of existing methods of classification of information and its application in the system <q lang="en">GrabTheTrade</q>
+    </title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<section id="work" class="d-flex justify-content-center article">
+    <div class="paper">
+        <h1 class="h4 text-center paper-title">Analysis of existing methods of classification of information and its application in the system <q lang="en">GrabTheTrade</q></h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex flex-column justify-content-center">
+                    <div class="content-box">
+                        <div class="h5">Authors</div>
+                        <p>M.G.&nbsp;Titarenko, I.A.&nbsp;Kolomoytseva, R.R.&nbsp;Gilmanova</p>
+                        <div class="h5">Source</div>
+                        <p>Материалы V Международной научно-технической конференции «Современные информационные технологии в образовании и научных исследованиях» (СИТОНИ-2017). – Донецк: ДонНТУ, 2017</p>
+                    </div>
+                    <div class="abstract-box">
+                        <div class="h5">Abstract</div>
+                        <p><b>M.G.  Titarenko, I.A.  Kolomoytseva, R.R.  Gilmanova Analysis of existing methods of classification of information and its application in the system "GrabTheTrade".</b>  The analysis of existing classification algorithms used in modern information retrieval systems is presented.  Classification methods that can be used in the <q lang="en">GrabTheTrade</q> information system are defined..</p>
+                        <div class="h5">Introduction</div>
+                        <p>Classification is an important part of any information retrieval system.  To date, there are several basic approaches to classification and many options for implementing these approaches.  Not all classification algorithms provide the same level of correctness of results and, usually, have their own scope.  In this regard, it was decided to consider, within the framework of this article, the approaches that are used in modern information retrieval systems.
+                        </p>
+                        <p>In the information system <q lang="en">GrabTheTrade</q>, which is working on collecting and analyzing trade and political information, it is planned to develop an internal information retrieval system, part of which is the classification of the data.</p>
+                        <div class="h5">Objective</div>
+                        <p>The purpose of this work is to analyze approaches to classification, to consider the principles of application of these approaches used in modern information retrieval systems, to determine the possibility of using them in the <q lang="en">GrabTheTrade</q> system..</p>
+                        <div class="h5">About classification</div>
+                        <p>Any classification is made on the basis of some signs.  In order to classify the text, you first need to determine the values of the selected characteristics for this text.  To use mathematical methods, the signs, as a rule, should have a quantitative expression.  The quantitative expression of the attributes associated with the presence, interaction, or interposition of certain elements in the text can be the frequencies of the appearance of these elements (for example, the frequency of occurrence of alphabetic or word combinations).  There are also other types of quantitative representation of characteristics (for example, when the characteristic characterizes the text entirely). <a href="#link-1">[1]</a>.</p>
+                        <p>The choice of a set of quantitative characteristics plays a decisive role in the classification of texts.  The number of occurrences of frequently encountered words is much more informative in terms of classifying texts according to the individual style than the number of paragraphs and the number of occurrences of sentences consisting of a certain number of words.</p>
+                        <p>One of the classes of methods of classification are the methods associated with machine learning. With these approaches, overfitting is possible.</p>
+                        <p>Overfitting is a phenomenon in which a machine learning algorithm is configured to noise, errors and anomalous data in the training set.</p>
+                        <div class="h5">Decision trees</div>
+                        <p>A decision tree is a plan presented in the form of an acyclic graph, according to which a classification of objects described by a set of attributes is made for a certain target attribute.  In the task of classifying texts, objects are texts (fragments of texts), the target attribute is a class of texts (style, genre, etc.).  As attributes describing the text, we will use quantitative signs of the text.</p>
+                        <p>Each tree node contains a branch condition for one of the attributes.</p>
+                        <p>Following the trained tree in accordance with the values of the attributes of an arbitrary object, we will end up in one of the leaves of the tree.  The value of this sheet will determine the value of the target attribute (class) of the object.</p>
+                        <p>When using decision trees to over overfitting, pruning techniques are used.  When thinning, on the basis of a certain criterion, those nodes of the tree that are most likely tuned to noise are discarded and the tree's ability to generalize is reduced.  In the task of classifying texts, uncharacteristic data and noise are a frequent phenomenon (for example, text fragments 302 written in a slightly different than supposed style), so it is necessary to use decimation <a href="#link-2">[2]</a>.</p>
+                        <p>To find out the effectiveness of the classification of the decision tree method itself (without taking into account the informativeness of the characteristics), one can only compare the results of its work with the results of the work of other classification methods on the same data.</p>
+                        <div class="h5">Neural networks</div>
+                        <p>Neural networks are the kind of mathematical models that are built on the principle of networking nerve cells of the brain.  At the heart of their construction is the idea that arbitrarily complex processes can be modeled with rather simple elements (neurons), and all the basic functionality of a neural network consisting of a set of neurons is provided by connections between neurons.</p>
+                        <p>There are many types of neural networks of different structures. Neural network of direct distribution is the form of neural networks that is the most popular and well-tested on different tasks. They allow non-linear approximation of arbitrary functions (in our case, the functions belonging to the class) on a set of examples. Neurons in these networks are United in layers. The network consists of an arbitrary number of layers. The neurons of each layer are connected with neurons of the previous and subsequent layers according to the principle <q>each with each</q> <a href="#link-3">[3]</a>.</p>
+                        <p>However, the following problems occur:
+                            <ul>
+                                <li>the network learns too slowly;</li>
+                                <li>the value of the attribute depends on the size of the text, so when learning and testing on texts of different sizes, the network will not be able to find the right solution.</li>
+                            </ul>
+                        </p>
+                        <p>On the task of classifying texts by quantitative characteristics, neural networks noticeably exceed the decision trees in efficiency.  But at the same time, their adjustment takes much longer (by 10 or more times) than the decision trees are built, and further data normalization is necessary before learning.  In addition, decision trees give an easily interpreted answer in the form of a set of rules for selecting a particular class, and neural networks are only information about the degree of belonging to classes.  Therefore, the choice of this or that method depends on the task: if high accuracy of classification of texts is required, then neural networks should be used, but if a clear and fast response is needed than decision trees required.</p>
+                        <div class="h5">Naive Bayesian Classifier</div>
+                        <p>NBC (Naive Bayes Classifier) is based on the Bayes theorem.</p>
+                        <div class="text-center">
+                            <img src="images/a1p1.png" />
+                        </div>
+                        <p>
+                            where,
+                            <ul>
+                                <li>P(a|b) — the probability that document b belongs to class a, it is we need to calculate it;</li>
+                                <li>P(b|a) — probability of meeting document b among all documents of class a;</li>
+                                <li>P(a) — unconditional probability of meeting a document of class a in the body of documents;</li>
+                                <li>P(b) — unconditional probability of document b in the body of documents.</li>
+                            </ul>
+                        </p>
+                        <p>Bayes theorem allows you to rearrange the cause and effect.  Knowing with what probability the cause leads to an event, this theorem allows us to calculate the probability that this particular reason led to the observed event <a href="#link-4">[4]</a>.</p>
+                        <p>The purpose of the classification is to understand to which class the document belongs, so it is not the probability itself, but the most likely class that is needed.  The Bayesian classifier uses the estimate of a posteriori maximum to determine the most probable class.</p>
+                        <p>That is, we need to calculate the probability for all classes and choose the class that has the maximum probability.</p>
+                        <p>Advantages of the method <a href="#link-5">[5]</a>:
+                            <ul>
+                                <li>the model defines the dependencies between all variables, which makes it easy to handle situations in which the values of some variables are unknown;</li>
+                                <li>bayesian networks are fairly easy to interpret and allow for easy analysis at the stage of predictive modeling in the "what if";</li>
+                                <li>the Bayesian method allows us to naturally combine the patterns derived from the data, and, for example, expert knowledge obtained in explicit form;</li>
+                                <li>the use of Bayesian networks avoids the problem of overfitting.</li>
+                            </ul>
+                        </p>
+                        <p>
+                            Disadvantages of the method:
+                            <ul>
+                                <li>the result of the classification in the naive Bayesian approach is affected only by individual values of the input variables, the combined effect of pairs or triples of values of different attributes is not taken into account here.  This could improve the quality of the classification model in terms of its predictive accuracy, however, would increase the number of verifiable options.</li>
+                            </ul>
+                        </p>
+                        <div class="h5">Classification by support vector method</div>
+                        <p>The support vector machine (SVM) takes a set of data consisting of numbers, and tries to predict which category it falls into.  You can, for example, determine the role of the player in the football team for its height and running speed.  For simplicity, consider only two possibilities: the position in the defense, which requires high height, and in the attack, where the player must move quickly <a href="#link-6">[6]</a>.</p>
+                        <p>SVM builds a prognostic model, looking for a line dividing the two categories.  If you postpone one axis of height, and the other - the speed and put the best position for each player, you get the diagram shown in the picture.  Defenders are crosses, and attackers are circles.  Also, the diagram shows several lines that separate data into two categories.</p>
+                        <p>The support vector machine finds the line that best divides the data.  This means that it passes at the maximum distance from the points located near it.  There are several dividing lines in the figure, but the best one is marked with the inscription "The best".  To determine where the line must pass, only the nearest points are needed, they are called support vectors.</p>
+                        <p>After the dividing line is found, to classify new samples, you only need to put them on the diagram and see which side of the separator they will be.  It is not needed to view learning data when classifying new samples, so the classification is very fast.</p>
+                        <br/>
+                        <div class="text-center">
+                            <img src="images/a1p2.png" />
+                        </div>
+                        <div class="text-center">Picture 1 – Lines separators</div>
+                        <br/>
+                        <p>The disadvantage is that the optimal function and its parameters depend on the particular data set, so that each time it is necessary to select them again.</p>
+                        <p>This method is more suited to large amounts of data, whereas decision trees provide information on a small set of data.  Also, like neural networks, it is a "black box".</p>
+                        <div class="h5">Nearest neighbor method</div>
+                        <p>The method of nearest neighbors (k Nearest Neighbors, or kNN) is a very popular method of classification.  This is one of the most understandable approaches to classification.  At the level of intuition, the essence of the method is this: look at the neighbors, and I will name you.  Formally, the basis of the method is the compactness hypothesis: if the distance metric between examples is introduced quite successfully, then similar examples are much more often in one class than in different classes <a href="#link-7">[7]</a>.</p>
+                        <p>According to the method of the nearest neighbors, the test case (green ball) will be classified as "blue", not "red".</p>
+                        <br/>
+                        <div class="text-center">
+                            <img src="images/a1p3.png" />
+                        </div>
+                        <div class="text-center">Picture 2 - Example of classification by the method of the nearest neighbor</div>
+                        <br/>
+                        <p>To classify each of the test sample objects, you must perform the following operations sequentially <a href="#link-8">[8]</a>:
+                            <ul>
+                                <li>calculate the distance to each of the learning sample objects;</li>
+                                <li>select k learning sample objects, the distance to which is minimally;</li>
+                                <li>the class of the object being classified is the class that is the most often encountered among the k nearest neighbors.</li>
+                            </ul>
+                        </p>
+                        <p>To classify text in this method, words, sentences and paragraphs that are already defined in this text are selected as objects.  So, if the first and third paragraphs of the text have an economic style, then most likely the second paragraph also applies to this style.</p>
+                        <p>For the method of nearest neighbors, there are many important theorems that assert that on "infinite" samples this is the optimal method of classification.  This is both a plus, because the correctness of the classification is high, and the minus of this method, cause the need to have large samples of data.</p>
+                        <div class="h5">Conclusion</div>
+                        <p>The analysis of existing classification algorithms was carried out, methods of obtaining reliable information in information retrieval systems were considered.</p>
+                        <p>The information system "GrabTheTrade" is a system for collecting, analyzing and demonstrating the output of trade and economic information.  It provides data from specified Internet sources, analysis of the reliability of the data received, aggregation and quarterly automatic updating of the data.</p>
+                        <p>In this system planned to implement an information retrieval system for obtaining trade and political information.  After carrying out search and ranking of the information in the system, the classification of the received data will be carried out.  For the classification in this system, we can use methods that require a large amount of data, namely neural networks or SVM.  It is also possible to use a combination of different methods for different stages of classification, as well as optimizing the correctness of the data obtained.</p>
+                        <div class="h5">Bibliography</div>
+                        <div>
+                            <ol>
+                                <li id="link-1">Маннинг, К.Д. Введение в информационный поиск / К. Д. Маннинг, П. Рагхаван, Х. Шютце – М: ООО «И.Д. Вильямс», 2011. – 528 с.</li>
+                                <li id="link-2">Чубукова, И.А. Data Mining / И.А. Чубукова – Киев: SmartBook, 2014 - 326 с.</li>
+                                <li id="link-3">Батура, Т.В. Методы автоматической классификации текстов / Т.В. Батура, 2017</li>
+                                <li id="link-4">Наивный байесовский классификатор. [Электронный ресурс] // Суровая реальность – Режим доступа: <a href="http://bazhenov.me/blog/2012/06/11/naive-bayes">http://bazhenov.me/blog/2012/06/11/naive-bayes</a>.</li>
+                                <li id="link-5">Методы классификации и прогнозирования. [Электронный ресурс] // Интуит – Режим доступа: <a href="http://www.intuit.ru/studies/courses/6/6/lecture/176?page=5">http://www.intuit.ru/studies/courses/6/6/lecture/176?page=5</a>.</li>
+                                <li id="link-6">Метод опорных векторов. [Электронный ресурс] // Блог о шифровании – Режим доступа: <a href="http://crypto.pp.ua/2011/05/metod-opornyx-vektorov/">http://crypto.pp.ua/2011/05/metod-opornyx-vektorov/</a>.</li>
+                                <li id="link-7">Открытый курс машинного обучения. Тема 3. Классификация, деревья решений и метод ближайших соседей. [Электронный ресурс] // Хабрахабр – Режим доступа: <a href="https://habrahabr.ru/company/ods/blog/322534/#metod-blizhayshih-sosedey">https://habrahabr.ru/company/ods/blog/322534/#metod-blizhayshih-sosedey</a>.</li>
+                                <li id="link-8">Топ-10 data mining-алгоритмов простым языком. [Электронный ресурс] // Хабрахабр – Режим доступа: <a href="https://habrahabr.ru/company/itinvest/blog/262155/">https://habrahabr.ru/company/itinvest/blog/262155/</a>.</li>
+                                <li id="link-9">Титаренко, М. Г. Информационная система «GrabTheTrade» / М. Г. Титаренко, И. А. Коломойцева // Информатика, управляющие системы, математическое и компьютерное моделирование в рамках III форума «Инновационные перспективы Донбасса» (ИУСМКМ – 2017): VIII Международная научно-техническая конференция. – Донецк: ДонНТУ, 2017. – С. 167-172.</li>
+                                <li id="link-10">Оценка классификатора (точность, полнота, F-мера). [Электронный ресурс] // Суровая реальность – Режим доступа: <a href="http://bazhenov.me/blog/2012/07/21/classification-performance-evaluation.html">http://bazhenov.me/blog/2012/07/21/classification-performance-evaluation.html</a>.</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    <!--
+//    $(window).scroll(function() {
+//        if ($(this).scrollTop() > 1){
+//            $('.header').addClass("thin");
+//            $('.image-box').addClass("thin");
+//            $('.title-box').addClass("thin");
+//            $('#work').addClass("thin");
+//        }
+//        else{
+//            $('.header').removeClass("thin");
+//            $('.image-box').removeClass("thin");
+//            $('.title-box').removeClass("thin");
+//            $('#work').removeClass("thin");
+//        }
+//    });
+    -->
+</script>
+</body>
+</html>

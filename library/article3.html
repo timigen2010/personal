@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>
+        Титаренко, Коломойцева - Обзор и анализ алгоритмов для осуществления бинарной классификации информации о внешнеторговой деятельности государств
+    </title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<section id="work" class="d-flex justify-content-center article">
+    <div class="paper">
+        <h1 class="h4 text-center paper-title">Обзор и анализ алгоритмов для осуществления бинарной классификации информации о внешнеторговой деятельности государств</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex flex-column justify-content-center">
+                    <div class="content-box">
+                        <div class="h5">Авторы</div>
+                        <p>М.Г.&nbsp;Титаренко, И.А.&nbsp;Коломойцева</p>
+                        <div class="h5">Источник</div>
+                        <p>Материалы международной научно-практическаой конференции «Программная инженерия: методы и технологии разработки информационновычислительных систем» (ПИИВС-2018) – Донецк: ДонНТУ, 2018.</p>
+                    </div>
+                    <div class="abstract-box">
+                        <div class="h5">Аннотация</div>
+                        <p><b>М.Г.&nbsp;Титаренко, И.А.&nbsp;Коломойцева Обзор и анализ алгоритмов для осуществления бинарной классификации информации о внешнеторговой деятельности государств.</b> Представлен анализ существующих алгоритмов классификации, выполнен отбор признаков и тестовых данных, произведено тестирование классификаторов, их оценка и сравнение результатов по бинарной классификации внешнеторговой информации.</p>
+                        <div class="h5">Актуальность и цель работы</div>
+                        <p>В современном мире в интернете ежедневно появляется огромное количество новостных заголовков о внешнеторговой деятельности государств, однако часто эти статьи, заметки и обзоры представляются пользователю общим списком, который, обычно отсортирован по времени добавления и не позволяет оценить полезность информации, действительно ли она соответствует искомой категории. В связи с этим, возникает необходимость автоматической классификации внешнеторговой информации. Данная работа является актуальной для информационно-поисковых систем, направленных на поиск и обработку информации по международной торговле.
+                        </p>
+                        <p>В статье приведен обзор алгоритмов классификации информации и их сравнение при работе с данными по внешнеторговой экономической деятельности государств.</p>
+                        <div class="h5">Отбор терминов для классификации</div>
+                        <p>Любая классификация производится на основе каких-либо признаков. Для того чтобы классифицировать текст прежде всего необходимо определить значения выбранных признаков для этого текста. На сегодняшний день одной из наиболее эффективных для автоматического определения необходимых признаков является TF-IDF мера <a href="#link-1">[1]</a>. TF-IDF - cтатистическая мера, которая используется для оценки значимости слова в документе, который является частью набора документов. Вес слова пропорционален частоте его употребления в документе и обратно пропорционален частоте его употребления во всем наборе (документах). Количество признаков было выбрано 10 произвольно, однако при его выборе учитывалось изменение f1 метрики на более высоких показателях данного параметра.</p>
+                        <div class="h5">Отбор материала для классификации</div>
+                        <p>Для тестирования алгоритмов классификации решено использовать набор классифицированных статей от reuters в количестве 10788 штук, из которых 7769 приходятся на обучающую выборку и 3019 – на тестируемую. Статьи классифицированы на 90 категорий. В исследовании реализован бинарный классификатор статей по внешнеторговым признакам, поэтому остальные 89 категорий были помечены, как «other».</p>
+                        <p>В качестве классификаторов в исследовании выбраны следующие алгоритмы: SVM (support vector machine), KNearestNeighbours, Гауссов классификатор, Деревья решений, классификатор RandomForest и Наивный Байесовский классификатор.</p>
+                        <div class="h5">SVM</div>
+                        <p>SVM (support vector machine) - набор алгоритмов классификации, которые переводят полученные исходные векторы в пространство большей размерности и находят разделяющую гиперплоскость, которая разделяет представленные классы <a href="#link-2">[2]</a>.</p>
+                        <p>В исследовании проводилось тестирование данного классификатора на разных показателях вводимого ядра, гаммы и параметр штрафа. При этом были рассчитаны метрики точности, полноты и f1 метрика. Результаты приведены в таблице 1.</p>
+                        <div class="row">
+                            <div class="col-xl-6 col-12 offset-xl-3 offset-0">
+                                <div class="h6 text-center">Таблица 1 - Метрики для классификатора SVC</div>
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <td class="text-center">Пар-ры</td>
+                                        <td class="text-center">Precision</td>
+                                        <td class="text-center">Recall</td>
+                                        <td class="text-center">F1</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <div>kernel = "linear",</div>
+                                            <div>C = 0.025</div>
+                                        </td>
+                                        <td class="text-center">0.924</td>
+                                        <td class="text-center">0.9612</td>
+                                        <td class="text-center">0.9423</td>
+                                    </tr>
+                                    <tr>
+                                        <td>gamma = 2, C = 1</td>
+                                        <td class="text-center">0.9578</td>
+                                        <td class="text-center">0.9626</td>
+                                        <td class="text-center">0.946</td>
+                                    </tr>
+                                    <tr>
+                                        <td>gamma = 3, C = 1</td>
+                                        <td class="text-center">0.9522</td>
+                                        <td class="text-center">0.9626</td>
+                                        <td class="text-center">0.9477</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p>Согласно полученным данным третье значение является оптимальным согласно F1 - мере. В дальнейшем сравнении будут использованы данные по этим параметрам.</p>
+                        <div class="h5">KNearestNeighbours</div>
+                        <p>В основе алгоритма ближайших соседей (kNN) лежит правило, что тестируемый объект со своим набором признаков принадлежит классу, которому принадлежат большинство из k его ближайших соседей <a href="#link-3">[3]</a>.</p>
+                        <p>В исследовании проводилось тестирование данного классификатора на разных показателях вводимого k, а именно на 3-х, 5-ти и 10-ти соседях. При этом были рассчитаны метрики точности, полноты и f1 метрика. Результаты приведены в таблице 2.</p>
+                        <div class="row">
+                            <div class="col-xl-6 col-12 offset-xl-3 offset-0">
+                                <div class="h6 text-center">Таблица 2 - Метрики для классификатора kNN</div>
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <td class="text-center">k</td>
+                                        <td class="text-center">Precision</td>
+                                        <td class="text-center">Recall</td>
+                                        <td class="text-center">F1</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="text-center">3</td>
+                                        <td class="text-center">0.946</td>
+                                        <td class="text-center">0.9559</td>
+                                        <td class="text-center">0.95</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">5</td>
+                                        <td class="text-center">0.9494</td>
+                                        <td class="text-center">0.9603</td>
+                                        <td class="text-center">0.9527</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">10</td>
+                                        <td class="text-center">0.9528</td>
+                                        <td class="text-center">0.9566</td>
+                                        <td class="text-center">0.9498</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p>Согласно полученным данным значение кол-ва соседей 5 является оптимальным согласно F1 - мере. В дальнейшем сравнении будут использованы данные по этому параметру.</p>
+                        <div class="h5">Гауссов классификатор</div>
+                        <p>Основная идея гауссовского классификатора заключается в предположении того, что функция правдоподобия (тренировочный набор) известна для каждого класса и равна плотности гауссовского нормального распределения <a href="#link-4">[4]</a>.</p>
+                        <p>В исследовании проводилось тестирование данного классификатора на разных показателях вводимого аргумента радиально-базисной функции. При этом были рассчитаны метрики точности, полноты и f1 метрика. Результаты приведены в таблице 3.</p>
+                        <div class="row">
+                            <div class="col-xl-6 col-12 offset-xl-3 offset-0">
+                                <div class="h6 text-center">Таблица 3 - Метрики для Гауссова классификатора</div>
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <td class="text-center">RBF(x)</td>
+                                        <td class="text-center">Precision</td>
+                                        <td class="text-center">Recall</td>
+                                        <td class="text-center">F1</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="text-center">1.0</td>
+                                        <td class="text-center">0.924</td>
+                                        <td class="text-center">0.9612</td>
+                                        <td class="text-center">0.9423</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">0.5</td>
+                                        <td class="text-center">0.924</td>
+                                        <td class="text-center">0.9612</td>
+                                        <td class="text-center">0.9423</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">1.5</td>
+                                        <td class="text-center">0.924</td>
+                                        <td class="text-center">0.9612</td>
+                                        <td class="text-center">0.9423</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p>Согласно полученным данным значение RBF слабо влияет на показатели согласно F1 - мере. </p>
+                        <div class="h5">Деревья решений</div>
+                        <p>Дерево решений – классификатор, который на тренировочных данных выстраивает структуру, узлам которого являются атрибуты различий, в листьях записаны атрибуты целевой функции, а на ребрах – необходимое множество атрибутов. Задача дерева решений – создать модель, которая предсказывает значение целевой функции на основе нескольких входов <a href="#link-4">[4]</a>.</p>
+                        <p>В исследовании проводилось тестирование данного классификатора на разных показателях вводимого аргумента максимальной глубины дерева. При этом были рассчитаны метрики точности, полноты и f1 метрика. Результаты приведены в таблице 4.</p>
+                        <div class="row">
+                            <div class="col-xl-6 col-12 offset-xl-3 offset-0">
+                                <div class="h6 text-center">Таблица 4 - Метрики для дерева решений</div>
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <td class="text-center">max</td>
+                                        <td class="text-center">Precision</td>
+                                        <td class="text-center">Recall</td>
+                                        <td class="text-center">F1</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="text-center">5</td>
+                                        <td class="text-center">0.9458</td>
+                                        <td class="text-center">0.9573</td>
+                                        <td class="text-center">0.9501</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">10</td>
+                                        <td class="text-center">0.9421</td>
+                                        <td class="text-center">0.9523</td>
+                                        <td class="text-center">0.9465</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">15</td>
+                                        <td class="text-center">0.943</td>
+                                        <td class="text-center">0.95</td>
+                                        <td class="text-center">0.9462</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p>Согласно полученным данным глубина дерева 5 является оптимальным согласно F1 - мере. В дальнейшем сравнении будут использованы данные по этому параметру.</p>
+                        <div class="h5">Классификатор RandomForest</div>
+                        <p>RandomForest – это алгоритм машинного обучения, который заключается в использовании гомогенного ансамбля деревьев решений. Основная идея состоит в использовании большого ансамбля деревьев решений, который за счет их большого количества улучшает результат классификации <a href="#link-5">[5]</a>.</p>
+                        <p>В исследовании проводилось тестирование данного классификатора на разных показателях вводимого аргумента максимальной глубины дерева. При этом были рассчитаны метрики точности, полноты и f1 метрика. Результаты приведены в таблице 5.</p>
+                        <div class="row">
+                            <div class="col-xl-6 col-12 offset-xl-3 offset-0">
+                                <div class="h6 text-center">Таблица 5 - Метрики для RandomForest</div>
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <td class="text-center">max</td>
+                                        <td class="text-center">Precision</td>
+                                        <td class="text-center">Recall</td>
+                                        <td class="text-center">F1</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="text-center">5</td>
+                                        <td class="text-center">0.924</td>
+                                        <td class="text-center">0.9502</td>
+                                        <td class="text-center">0.9487</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">10</td>
+                                        <td class="text-center">0.9606</td>
+                                        <td class="text-center">0.9626</td>
+                                        <td class="text-center">0.9612</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">15</td>
+                                        <td class="text-center">0.9419</td>
+                                        <td class="text-center">0.953</td>
+                                        <td class="text-center">0.9527</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p>Согласно полученным данным глубина дерева 10 является оптимальным согласно F1 - мере. В дальнейшем сравнении будут использованы данные по этому параметру.</p>
+                        <div class="h5">Наивный Байесовский классификатор</div>
+                        <p>В основе наивного Байесовского классификатора лежит теорема Байеса. Данный классификатор стал одним из стандартных универсальных методов классификации. Достоинством данного классификатора является относительно небольшое количество данных, необходимых для обучения <a href="#link-6">[6]</a>.</p>
+                        <p>В исследовании проведено тестирование данного классификатора. При этом были рассчитаны метрики точности, полноты и f1 метрика. Результаты приведены в таблице 6.</p>
+                        <div class="row">
+                            <div class="col-xl-6 col-12 offset-xl-3 offset-0">
+                                <div class="h6 text-center">Таблица 6 - Метрики для NaiveBayesian</div>
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <td class="text-center">Precision</td>
+                                        <td class="text-center">Recall</td>
+                                        <td class="text-center">F1</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="text-center">0.9551</td>
+                                        <td class="text-center">0.6568</td>
+                                        <td class="text-center">0.7602</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="h5">Сравнение классификаторов</div>
+                        <p>После проведения тестирования выполнен сравнительный анализ классификаторов по точности, полноте и f1 мере. В связи с тем, что была использована достаточно большая коллекция тренировочных документов, а также благодаря использованию алгоритма отбора признаков TF-IDF, полученные результаты отличаются достаточно незначительно и все имеют хорошие показатели распознавания текстов с внешнеторговой международной информацией. Исключение составляет лишь наивный Байесовский алгоритм, который показал уровень F1 в 0.7602, что не является удовлетворительным результатом для бинарной классификации. Результаты сравнения представлены на рисунке 1. По взвешенной оценке, наилучшим образом себя показал гомогенный ансамбль RandomForest на глубине дерева 10.</p>
+                        <br/>
+                        <div class="text-center">
+                            <img src="images/a3p1.png" />
+                        </div>
+                        <div class="text-center">Рисунок 1 – Сравнение классификаторов</div>
+                        <br/>
+                        <div class="h5">Выводы</div>
+                        <p>Проведен анализ алгоритмов классификации, таких как SVM (support vector machine), KNearestNeighbours, Гауссов классификатор, Деревья решений, классификатор RandomForest и Наивный Байесовский классификатор. Реализован алгоритм отбора и отобраны признаки классификации по TF-IDF. Проведено тестирование алгоритмов с различными параметрами по тренировочным и тестовым данным, определены оптимальные параметры для каждого алгоритма на основании оценки F1 меры. Проведено сравнение алгоритмов сравнением оптимального значения F1 меры, полноты и точности для каждого из них. Гомогенный ансамбль RandomForest установлен, как оптимальный классификатор для бинарной классификации внешнеторговой информации. Установлены неудовлетворительные результаты классификации наивным Байесовским классификатором.</p>
+
+                        <div class="h5">Список литературы</div>
+                        <div>
+                            <ol>
+                                <li id="link-1">Salton, G. and Buckley, C. Term-weighting approaches in automatic text retrieval. Information Processing & Management, 1988</li>
+                                <li id="link-2">Nello Cristianini, John Shawe-Taylor An Introduction to Support Vector Machines and Other Kernel-based Learning Methods. — Cambridge University Press, 2000</li>
+                                <li id="link-3">Brett Lantz Machine Learning with R. Pack Publishing. Birmongham-Mumbai, 2013</li>
+                                <li id="link-4">Breiman, Leo; Friedman, J. H., Olshen, R. A., & Stone, C. J. Classification and regression trees. Monterey, CA: Wadsworth & Brooks/Cole Advanced Books & Software, 1984</li>
+                                <li id="link-5">Hastie, T., Tibshirani R., Friedman J. Chapter 15. Random Forests // The Elements of Statistical Learning: Data Mining, Inference, and Prediction. — 2nd ed. — Springer-Verlag, 2009. — 746 с.</li>
+                                <li id="link-6">Hand, DJ, & Yu, K. «Idiot’s Bayes — not so stupid after all?» International Statistical Review, 2001. - с 385—399.</li>
+                                <li id="link-7">Е.И. Большакова Автоматическая обработка текстов на естественном языке и компьютерная лингвистика: учеб. пособие / Большакова Е.И., Клышинский Э.С., Ландэ Д.В., Носков А.А., Пескова О.В., Ягунова Е.В. — М.: МИЭМ, 2011. — 272 с.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+</body>
+</html>

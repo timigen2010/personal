@@ -82,13 +82,17 @@ a.icon-font:hover{
     transition: all 0.5s ease-in-out;
 }
 
+#navigation{
+    padding: 0!important;
+}
+
 .navigation{
     margin: auto;
     padding: 0;
 }
 
 .navigation li a{
-    font-size: 16px;
+    font-size: 15px;
 }
 
 a.title-font.selected{
@@ -124,14 +128,14 @@ a.title-font::after{
 a.title-font:hover::before{
     opacity: 1;
     margin-right: 10px;
-    margin-left: 0px;
+    margin-left: 0;
     content: "[";
 }
 
 a.title-font:hover::after{
     opacity: 1;
     margin-left: 10px;
-    margin-right: 0px;
+    margin-right: 0;
     content: "]";
 }
 
@@ -174,7 +178,7 @@ a.title-font:hover::after{
     top: 0;
     left: 0;
     right: 0;
-    height: 60vh;
+    height: 450px;
 
     -webkit-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
@@ -191,11 +195,11 @@ a.title-font:hover::after{
 }
 
 .header.thin{
-    height: 15vh;
+    height: 115px;
 }
 
 section{
-    margin-top: 60vh;
+    margin-top: 450px;
     margin-left: 25px;
     margin-right: 25px;
 
@@ -207,7 +211,7 @@ section{
 }
 
 section.thin{
-    margin-top: 15vh;
+    margin-top: 115px;
 
     -webkit-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
@@ -515,6 +519,10 @@ li.content-level-3{
     margin-left: 40pt;
 }
 
+.content p{
+    font-weight: normal;
+}
+
 .abstract-box p{
     text-indent: 20pt;
     text-align: justify;
@@ -524,6 +532,29 @@ li.content-level-3{
     border: 5px solid #4b6370;
     padding: 5px;
     margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.library-box{
+    margin-top: 25px;
+}
+
+/*Статьи*/
+
+section.article{
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+
+    border-left: 0;
+    border-right: 0;
+}
+
+.article .content-box{
+    text-align: justify;
+}
+
+.article .paper-title{
     margin-bottom: 25px;
 }
 
@@ -539,12 +570,12 @@ li.content-level-3{
         margin-right: 0;
     }
     .header{
-        height: 15vh!important;
+        /*height: 115px!important;*/
     }
     section{
         margin-left: 0;
         margin-right: 0;
-        margin-top: 15vh!important;
+        margin-top: 115px!important;
     }
     .immobile{
         display: none!important;

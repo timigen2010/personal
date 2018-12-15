@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>
+        Titarenko, Kolomoytseva, Gilmanova - Review and analysis of effectiveness of the binary classification algorithms to classify information of countries’ international trade activity
+    </title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<section id="work" class="d-flex justify-content-center article">
+    <div class="paper">
+        <h1 class="h4 text-center paper-title">Review and analysis of effectiveness of the binary classification algorithms to classify information of countries’ international trade activity</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex flex-column justify-content-center">
+                    <div class="content-box">
+                        <div class="h5">Authors</div>
+                        <p>M.G.&nbsp;Titarenko, I.A.&nbsp;Kolomoytseva, R.R.&nbsp;Gilmanova</p>
+                        <div class="h5">Source</div>
+                        <p>Материалы международной научно-практическаой конференции «Программная инженерия: методы и технологии разработки информационновычислительных систем» (ПИИВС-2018) – Донецк: ДонНТУ, 2018.</p>
+                    </div>
+                    <div class="abstract-box">
+                        <div class="h5">Abstract</div>
+                        <p><b>M.G.&nbsp;Titarenko, I.A.&nbsp;Kolomoytseva, R.R.&nbsp;Gilmanova Review and analysis of effectiveness of the binary classification algorithms to classify information of countries’ international trade activity.</b> The analysis of the existing classification algorithms is presented, the selection of features and test data is carried out, the classifiers are tested, the effectiveness rates of the binary classification algorithms to classify information of countries’ international trade activity are evaluated and compared.</p>
+                        <div class="h5">Abstract</div>
+                        <p>Nowadays in the internet appear enormous amount of the news’ topics about countries’ international trade activity. But often these articles, notes and reviews are presented to user as general list which is usually sorted by the time added and doesn’t provide to evaluate the relevance of the information and find out is it corresponding with searching category. In this regard appears need of international trade automatic classification. This study is relevant to information retrieval systems that are oriented to search and processing international trade information.
+                        </p>
+                        <p>The article provides the review of information classification algorithms and their comparison in working with countries’ international trade activity data. </p>
+                        <div class="h5">Classification features selection</div>
+                        <p>Every classification is producing on the basis of some features. In order to classify text first of all is necessary to define the values of selected features for this text. Today one of the most effective measure for necessary features automatic defining is TF-IDF <a href="#link-1">[1]</a>. TF-IDF is statistical measure which is using for word value evaluation in document which is a part of documents collection. The word weight is proportional to its frequency in the document and inversely proportional to its frequency in the whole collection. The features count is selected as 10 randomly but considering the changing of f1 measure on the higher values of this parameter.</p>
+                        <div class="h5">Data selection for classification</div>
+                        <p>In purpose to test the classification algorithms is decided to use the set of classified articles from Reuters in amount of 10788 articles. The training set consists of 7769 articles and the test one from 3019. The articles are classified to 90 categories. In the study the binary classifier of articles on international trade features is implemented so other 89 categories were marked as <q>other</q>.</p>
+                        <p>In this work as classifiers are selected SVM (support vector machine), KNearestNeighbors, Gauss Classifier, Decision Tree, RandomForest and Naive Bayesian Classifier.</p>
+                        <div class="h5">SVM</div>
+                        <p>SVM (support vector machine) – is the set of classification algorithms which are transfer the source vectors to the space with higher dimension and find separating hyperplane that separates presented classes <a href="#link-2">[2]</a>.</p>
+                        <p>In the research this classifier is tested on the different values of kernel and penalty parameters. The metrics of precision, recall and f1 are evaluated. The results are presented in the table 1.</p>
+                        <div class="row">
+                            <div class="col-xl-6 col-12 offset-xl-3 offset-0">
+                                <div class="h6 text-center">Table 1 – Metrics for SVC classifier</div>
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <td class="text-center">Parameters</td>
+                                        <td class="text-center">Precision</td>
+                                        <td class="text-center">Recall</td>
+                                        <td class="text-center">F1</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <div>kernel = "linear",</div>
+                                            <div>C = 0.025</div>
+                                        </td>
+                                        <td class="text-center">0.924</td>
+                                        <td class="text-center">0.9612</td>
+                                        <td class="text-center">0.9423</td>
+                                    </tr>
+                                    <tr>
+                                        <td>gamma = 2, C = 1</td>
+                                        <td class="text-center">0.9578</td>
+                                        <td class="text-center">0.9626</td>
+                                        <td class="text-center">0.946</td>
+                                    </tr>
+                                    <tr>
+                                        <td>gamma = 3, C = 1</td>
+                                        <td class="text-center">0.9522</td>
+                                        <td class="text-center">0.9626</td>
+                                        <td class="text-center">0.9477</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p>According to received data and f1 measure the third parameter is optimal. In the next comparison will be used data from this row.</p>
+                        <div class="h5">KNearestNeighbours</div>
+                        <p>In the basis of KNearestNeighbors algorithm (kNN) is the rule that the tested object with its set of features belongs to the class that have majority of object’s k nearest neighbors <a href="#link-3">[3]</a>.</p>
+                        <p>In the research this classifier is tested on the different values of k parameters which are 3, 5 and 10 neighbors. The metrics of precision, recall and f1 are evaluated. The results are presented in the table 2.</p>
+                        <div class="row">
+                            <div class="col-xl-6 col-12 offset-xl-3 offset-0">
+                                <div class="h6 text-center">Table 2 – Metrics for kNN classifier</div>
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <td class="text-center">k</td>
+                                        <td class="text-center">Precision</td>
+                                        <td class="text-center">Recall</td>
+                                        <td class="text-center">F1</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="text-center">3</td>
+                                        <td class="text-center">0.946</td>
+                                        <td class="text-center">0.9559</td>
+                                        <td class="text-center">0.95</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">5</td>
+                                        <td class="text-center">0.9494</td>
+                                        <td class="text-center">0.9603</td>
+                                        <td class="text-center">0.9527</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">10</td>
+                                        <td class="text-center">0.9528</td>
+                                        <td class="text-center">0.9566</td>
+                                        <td class="text-center">0.9498</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p>According to received data and f1 measure the parameter of 5 is optimal. In the next comparison will be used data from this row.</p>
+                        <div class="h5">Gauss classifier</div>
+                        <p>The main idea of gauss classifier is in suggestion that the likelihood function (training set) is known for every class and is equal to the density of the Gaussian normal distribution <a href="#link-4">[4]</a>.</p>
+                        <p>In the research this classifier is tested on the different values of radial basis function argument. The metrics of precision, recall and f1 are evaluated. The results are presented in the table 3.</p>
+                        <div class="row">
+                            <div class="col-xl-6 col-12 offset-xl-3 offset-0">
+                                <div class="h6 text-center">Table 3 – Metrics for Gauss classifier</div>
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <td class="text-center">RBF(x)</td>
+                                        <td class="text-center">Precision</td>
+                                        <td class="text-center">Recall</td>
+                                        <td class="text-center">F1</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="text-center">1.0</td>
+                                        <td class="text-center">0.924</td>
+                                        <td class="text-center">0.9612</td>
+                                        <td class="text-center">0.9423</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">0.5</td>
+                                        <td class="text-center">0.924</td>
+                                        <td class="text-center">0.9612</td>
+                                        <td class="text-center">0.9423</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">1.5</td>
+                                        <td class="text-center">0.924</td>
+                                        <td class="text-center">0.9612</td>
+                                        <td class="text-center">0.9423</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p>According to received data and f1 measure the argument of RBF has low influence on results.</p>
+                        <div class="h5">Decision tree</div>
+                        <p>Decision tree is a classifier that on the training set build the structure with nodes which are difference attributes, leaves in which objective function attributes are wrote and ribs with necessary array of attributes. The goal of the decision tree is to create model which predicts value of objective function on the basis of several inputs <a href="#link-4">[4]</a>.</p>
+                        <p>В исследовании проводилось тестирование данного классификатора на разных показателях вводимого аргумента максимальной глубины дерева. При этом были рассчитаны метрики точности, полноты и f1 метрика. Результаты приведены в таблице 4.</p>
+                        <div class="row">
+                            <div class="col-xl-6 col-12 offset-xl-3 offset-0">
+                                <div class="h6 text-center">Table 4 – Metrics for Decision tree</div>
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <td class="text-center">max</td>
+                                        <td class="text-center">Precision</td>
+                                        <td class="text-center">Recall</td>
+                                        <td class="text-center">F1</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="text-center">5</td>
+                                        <td class="text-center">0.9458</td>
+                                        <td class="text-center">0.9573</td>
+                                        <td class="text-center">0.9501</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">10</td>
+                                        <td class="text-center">0.9421</td>
+                                        <td class="text-center">0.9523</td>
+                                        <td class="text-center">0.9465</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">15</td>
+                                        <td class="text-center">0.943</td>
+                                        <td class="text-center">0.95</td>
+                                        <td class="text-center">0.9462</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p>According to received data and f1 measure maximum tree depth of 5 is optimal. In the next comparison will be used data from this row.</p>
+                        <div class="h5">RandomForest</div>
+                        <p>RandomForest is a machine learning algorithm that consists in using homogeneous ensemble of decision trees. The main idea is using big ensemble of decision trees that due to big amount of them improves the result of classification <a href="#link-5">[5]</a>.</p>
+                        <p>In the research this classifier is tested on the different values of maximum tree depth. The metrics of precision, recall and f1 are evaluated. The results are presented in the table 5.</p>
+                        <div class="row">
+                            <div class="col-xl-6 col-12 offset-xl-3 offset-0">
+                                <div class="h6 text-center">Table 5 – Metrics for RandomForest</div>
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <td class="text-center">max</td>
+                                        <td class="text-center">Precision</td>
+                                        <td class="text-center">Recall</td>
+                                        <td class="text-center">F1</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="text-center">5</td>
+                                        <td class="text-center">0.924</td>
+                                        <td class="text-center">0.9502</td>
+                                        <td class="text-center">0.9487</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">10</td>
+                                        <td class="text-center">0.9606</td>
+                                        <td class="text-center">0.9626</td>
+                                        <td class="text-center">0.9612</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">15</td>
+                                        <td class="text-center">0.9419</td>
+                                        <td class="text-center">0.953</td>
+                                        <td class="text-center">0.9527</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p>According to received data and f1 measure maximum tree depth of 10 is optimal. In the next comparison will be used data from this row.</p>
+                        <div class="h5">Naive Bayesian Classifier</div>
+                        <p>In the basis of Naive Bayesian Classifier is Bayes theorem. This classifier became one of the standard universal methods of classification. Advantage of this classifier is relatively small amount of data necessary for training <a href="#link-6">[6]</a>.</p>
+                        <p>In the research this classifier is tested. The metrics of precision, recall and f1 are evaluated. The results are presented in the table 6.</p>
+                        <div class="row">
+                            <div class="col-xl-6 col-12 offset-xl-3 offset-0">
+                                <div class="h6 text-center">Table 6 – Metrics for Naïve Bayesian Classifier</div>
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <td class="text-center">Precision</td>
+                                        <td class="text-center">Recall</td>
+                                        <td class="text-center">F1</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="text-center">0.9551</td>
+                                        <td class="text-center">0.6568</td>
+                                        <td class="text-center">0.7602</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="h5">Classifiers comparison</div>
+                        <p>After testing classifiers comparative analysis by precision, recall and f1 measure is carried out. In order to big enough collection was used and due to using TF-IDF features selection algorithm the results have quiet small differences and all of them have good rates of text classification of countries’ international trade activity. Exception is only Naive Bayesian Classifier that presented f1 measure level on 0.7602 which isn’t satisfactory result for binary classification. The results of comparison are presented on the picture 1. According to weighted estimate the homogeneous ensemble RandomForset showed itself best with the maximum tree depth of 10.</p>
+                        <br/>
+                        <div class="text-center">
+                            <img src="images/a10p1.png" />
+                        </div>
+                        <div class="text-center">Picture 1 – Classifiers comparison</div>
+                        <br/>
+                        <div class="h5">Conclusion</div>
+                        <p>The analysis of classification algorithms as SVM, KNearestNeighbors, Gauss Classifier, Decision Trees, RandomForest and Naive Bayesian Classifier is carried out. The selection algorithm is implemented and the classification features are selected with TF-IDF. The algorithms with different parameters are tested. Optimal parameters for every algorithm on the basis of f1 measure are defined. The algorithms are compared by precision, recall and f1 measure. The homogeneous ensemble as optimal classifier for binary classification of information of countries’ international trade activity is defined. Not satisfactory results of classification with Naive Bayesian Classifier are presented.</p>
+
+                        <div class="h5">References</div>
+                        <div>
+                            <ol>
+                                <li id="link-1">Salton, G. and Buckley, C. Term-weighting approaches in automatic text retrieval. Information Processing & Management, 1988</li>
+                                <li id="link-2">Nello Cristianini, John Shawe-Taylor An Introduction to Support Vector Machines and Other Kernel-based Learning Methods. — Cambridge University Press, 2000</li>
+                                <li id="link-3">Brett Lantz Machine Learning with R. Pack Publishing. Birmongham-Mumbai, 2013</li>
+                                <li id="link-4">Breiman, Leo; Friedman, J. H., Olshen, R. A., & Stone, C. J. Classification and regression trees. Monterey, CA: Wadsworth & Brooks/Cole Advanced Books & Software, 1984</li>
+                                <li id="link-5">Hastie, T., Tibshirani R., Friedman J. Chapter 15. Random Forests // The Elements of Statistical Learning: Data Mining, Inference, and Prediction. — 2nd ed. — Springer-Verlag, 2009. — 746 с.</li>
+                                <li id="link-6">Hand, DJ, & Yu, K. «Idiot’s Bayes — not so stupid after all?» International Statistical Review, 2001. - с 385—399.</li>
+                                <li id="link-7">Е.И. Большакова Автоматическая обработка текстов на естественном языке и компьютерная лингвистика: учеб. пособие / Большакова Е.И., Клышинский Э.С., Ландэ Д.В., Носков А.А., Пескова О.В., Ягунова Е.В. — М.: МИЭМ, 2011. — 272 с.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+</body>
+</html>
