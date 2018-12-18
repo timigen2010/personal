@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>Bing</title>
+	<style type="text/css">
+		   body { font-family: sans-serif; text-align:center;}
+		   input {font-size: large;}
+		   option {font-size: large;}
+	</style>
+	<script type="text/javascript">
+		function bing() {
+			var url = "http://www.bing.com/search?q=";
+			var qry = document.fields.query.value;
+			qry = qry.replace(/\%/g,"%25").replace(/\+/g,"%2B").replace(/\&/g,"%26").replace(/\:/g,"%3A").replace(/\,/g,"%2C").replace(/\//g,"%2F").replace(/\?/g,"%3F").replace(/\@/g,"%40").replace(/\=/g,"%3D").replace(/\$/g,"%24").replace(/\#/g,"%23").replace(/\ /g,"+");
+			url = url + qry;
+
+			var aust = document.fields.australia.checked;
+			if (aust) url = url + "&rf=1";
+
+			var when = document.fields.when.value;
+			if (when != "") url = url + "&tbs=qdr:" + when;
+
+			console.log(url);
+//			window.location = url;
+			return false;
+		}
+	</script>
+  </head>
+     <body OnLoad="document.fields.query.focus();" style="background-image:url('bing.jpg');">
+  		<h1>Bing</h1>
+		<form name="fields" method="post" onsubmit="bing(); return false;">
+		<input type="text" name="query" value="" style="width:90%;">
+		<br/>
+		<p>Australia only: <input type="checkbox" name="australia" value="">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		Updated: <select name="when">
+			<option value="d">Past day</option>
+  			<option value="w">Past week</option>
+  			<option value="m">Past month</option>
+  			<option value="y">Past year</option>
+  			<option selected value="">Any time</option>
+			</select>
+		</p>
+		<input type="submit" name="submit" value="Search">
+		</form>
+  </body>
+</html>

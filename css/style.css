@@ -570,7 +570,7 @@ section.article{
         margin-right: 0;
     }
     .header{
-        /*height: 115px!important;*/
+        height: 115px!important;
     }
     section{
         margin-left: 0;
